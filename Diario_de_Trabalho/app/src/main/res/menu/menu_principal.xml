@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.joaopirolo.diario_de_trabalho.PrincipalActivity">
+
+    <item android:id="@+id/servicos"
+        android:icon="@drawable/ic_content_paste_black_24dp"
+        android:title="Servicos"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/tiposServicos"
+        android:icon="@drawable/ic_build_black_24dp"
+        android:title="TiposServicos"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/configs"
+        android:icon="@drawable/ic_settings_applications_black_24dp"
+        android:title="Config"
+        app:showAsAction="ifRoom" />
+
+</menu>
