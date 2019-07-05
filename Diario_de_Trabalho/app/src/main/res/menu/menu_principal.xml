@@ -17,6 +17,14 @@
         android:id="@+id/configs"
         android:icon="@drawable/ic_settings_applications_black_24dp"
         android:title="Config"
-        app:showAsAction="ifRoom" />
-
+        app:showAsAction="ifRoom">
+        <menu>
+            <item android:id="@+id/cores"
+                  android:title="@string/preferencias"
+                  app:showAsAction="never"/>
+            <item android:id="@+id/info"
+                  android:title="@string/info"
+                  app:showAsAction="never"/>
+        </menu>
+    </item>
 </menu>
