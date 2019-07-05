@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <String-array name="categoriasDeServicos">
+        <item>"Reparo Voz"</item>
+        <item>"Reparo Velox"</item>
+        <item>"Instalação Velox"</item>
+        <item>"Instalação Voz"</item>
+        <item>"Mudança de Endereço"</item>
+    </String-array>
+
+</resources>

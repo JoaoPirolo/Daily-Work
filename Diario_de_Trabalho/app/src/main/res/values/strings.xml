@@ -5,6 +5,7 @@
     <string name="preferencias">Preferencias</string>
     <string name="autor">Autor: João Carlos Pirolo</string>
     <string name="describe">Aplicativo movel para controle de atividades relacionadas aos serviços de telefonia fixa e internet ADSL, criado com objetivo de atender os requisitos para obter aprovação da disciplina de Programação Móvel.</string>
+    <string name="addServico">Novo Servico</string>
 
 
 </resources>
