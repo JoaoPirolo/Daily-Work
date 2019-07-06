@@ -10,6 +10,22 @@
     <string name="city">Cidade</string>
     <string name="ard">Armário</string>
     <string name="categoriasDeServico">Tipo De Serviço Prestado</string>
-
-
+    <string name="apagar_servico">Apagar Servico</string>
+    <string name="editar_servicos">Editar Serviço</string>
+    <string name="tipoDeServico">Tipo de Serviço</string>
+    <string name="deletar_categoria_de_servico">Deletar Categoria De Servico</string>
+    <string name="editar_categoria">Editar Categoria</string>
+    <string name="CategoriaDeServicos">categoriasDeServicos</string>
+    <string name="add_servico">Add Servico</string>
+    <string name="novo_servico">Novo Serviço</string>
+    <string name="editarServico">Atualizar Serviço</string>
+    <string name="numBa_vazio">Campo BA vazio</string>
+    <string name="addCategoriaServico">addCategoriaServico</string>
+    <string name="notificacao">notifica</string>
+    <string name="ok">OK</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="armario_vazio">Campo ARD vazio!</string>
+    <string name="cidade_vazio">Campo cidade vazio!</string>
+    <string name="tipo_servico_vazio">Campo Tipo de Servico está vazio</string>
 </resources>

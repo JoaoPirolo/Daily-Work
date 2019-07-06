@@ -1,5 +1,6 @@
 package com.joaopirolo.diario_de_trabalho.persistence;
 
+import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
@@ -8,7 +9,7 @@ import android.arch.persistence.room.Update;
 import com.joaopirolo.diario_de_trabalho.model.Servicos;
 
 import java.util.List;
-
+@Dao
 public interface ServicosDao {
     @Insert
     long insert(Servicos servicos);
@@ -19,6 +20,6 @@ public interface ServicosDao {
 
     @Query("SELECT * FROM servicos WHERE id = :id")
     Servicos queryForId(long id);
-    @Query("SELECT * FROM servicos ORDER BY numBa ASC")
+    @Query("SELECT * FROM servicos ORDER BY numberBa ASC")
     List<Servicos> queryAll();
 }

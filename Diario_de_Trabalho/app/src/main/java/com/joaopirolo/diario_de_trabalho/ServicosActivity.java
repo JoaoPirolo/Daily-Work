@@ -13,7 +13,8 @@ import android.widget.Spinner;
 
 import com.joaopirolo.diario_de_trabalho.model.CategoriaDeServicos;
 import com.joaopirolo.diario_de_trabalho.model.Servicos;
-import com.joaopirolo.diario_de_trabalho.persistence.ServicosDatabase;
+import com.joaopirolo.diario_de_trabalho.persistence.DiarioDeTrabalhoDatabase;
+import com.joaopirolo.diario_de_trabalho.utils.UtilsAviso;
 
 import java.util.List;
 
@@ -38,13 +39,13 @@ public class ServicosActivity extends AppCompatActivity {
     public static final String MODO = "MODO";
     public static final String ID = "ID";
 
-    public static final String Servicos = "SERVICOS"
+    public static final String Servicos = "SERVICOS";
 
    public static final int NEW = 1;
    public static final int UPDATE = 2;
 
 public static void novoServico(Activity activity, int requestCode){
-    Intent intent = new Intent(activity, Servicos.class);
+    Intent intent = new Intent(activity, ServicosActivity.class);
     intent.putExtra(MODO, NEW);
     activity.startActivityForResult(intent, requestCode);
 }
@@ -55,16 +56,16 @@ public static void alterarServico(Activity activity, int requestCode, Servicos s
     activity.startActivityForResult(intent, requestCode);
 }
 private void carregaCor(){
-    layout.setBackgroundColor(PrincipalActivity.preferenciaCor);
+    layout.setBackgroundColor(PrincipalActivity.selecionaCor);
 }
 public void salvarServico(){
-    String numba = UtilsAviso.validaCampo(this, editTextNumBa, "Campo BA não pode ser Vazio!");
+    String numba = UtilsAviso.validaCampo(this, editTextNumBa, R.string.numBa_vazio);
     if(numba == null)
         return;
-    String city = UtilsAviso.validaCampo(this, editTextCity, "Campo Cidade não pode ser Vazio");
+    String city = UtilsAviso.validaCampo(this, editTextCity,R.string.cidade_vazio);
     if(city == null)
         return;
-    String ard = UtilsAviso.validaCampo(this, editTextArd, "Campo Armário não pode ser Vazio");
+    String ard = UtilsAviso.validaCampo(this, editTextArd, R.string.armario_vazio);
     if(ard == null)
         return;
 
@@ -81,7 +82,7 @@ public void salvarServico(){
     AsyncTask.execute(new Runnable() {
         @Override
         public void run() {
-            ServicosDatabase base = ServicosDatabase.getDatabase(ServicosActivity.this);
+            DiarioDeTrabalhoDatabase base = DiarioDeTrabalhoDatabase.getDatabase(ServicosActivity.this);
             if(modo == NEW){
                 int newId = (int) base.servicosDao().insert(servicos);
                 servicos.setId(newId);
@@ -99,6 +100,7 @@ private void cancelar(){
     finish();
 }
 public void salvarServicoClick(View view){
+
     salvarServico();
 }
 
@@ -106,15 +108,15 @@ private void mostrarCategoriasDeServicos(){
     AsyncTask.execute(new Runnable() {
         @Override
         public void run() {
-            ServicosDatabase base = ServicosDatabase.getDatabase(ServicosActivity.this);
+            DiarioDeTrabalhoDatabase base = DiarioDeTrabalhoDatabase.getDatabase(ServicosActivity.this);
 
-            listagemDeTiposDeServico = base.categoriaDeServicoDao().queryAll();
+           categoriadeservicos = base.categoriaDeServicoDao().queryAll();
 
             ServicosActivity.this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     ArrayAdapter<CategoriaDeServicos> spinnerAdapter = new ArrayAdapter<>(ServicosActivity.this,
-                            android.layout.simple_list_item_1, listagemDeTiposDeServico);
+                            android.R.layout.simple_list_item_1, categoriadeservicos);
                     spinnerCategoriaDeServicos.setAdapter(spinnerAdapter);
                 }
             });
@@ -122,8 +124,8 @@ private void mostrarCategoriasDeServicos(){
     });
 }
 private int ordenaTiposDeServico(int categoriaDeServicosId){
-    for(int ordem = 0; ordem < listagemDeTiposDeServico.size(); ordem ++){
-        CategoriaDeServicos categoria = listagemDeTiposDeServico.get(ordem);
+    for(int ordem = 0; ordem < categoriadeservicos.size(); ordem ++){
+        CategoriaDeServicos categoria = categoriadeservicos.get(ordem);
         if(categoria.getId() == categoriaDeServicosId){
             return ordem;
         }
@@ -143,7 +145,8 @@ public void onBackPressed(){
         editTextCity  = findViewById(R.id.editTextCity);
         editTextArd   = findViewById(R.id.editTextArd);
         spinnerCategoriaDeServicos = findViewById(R.id.spinnerCategoriaDeServicos);
-        layout = findViewById(R.id.servicosLayout);
+        layout = findViewById(R.id.LayoutServicos);
+
         mostrarCategoriasDeServicos();
 
         Intent intent = getIntent();
@@ -151,16 +154,16 @@ public void onBackPressed(){
         if(bundle != null){
             modo = bundle.getInt(MODO, NEW);
                 if(modo == NEW){
-                    setTitle("Novo Serviço");
+                    setTitle(R.string.novo_servico);
                     servicos = new Servicos("", "","");
                 }
                 else{
-                    setTitle("Atualizar Serviço");
+                    setTitle(R.string.editarServico);
                     AsyncTask.execute(new Runnable() {
                         @Override
                         public void run() {
                             int id = bundle.getInt(ID);
-                            ServicosDatabase base = ServicosDatabase.getDatabase(ServicosActivity.this);
+                            DiarioDeTrabalhoDatabase base = DiarioDeTrabalhoDatabase.getDatabase(ServicosActivity.this);
                             servicos = base.servicosDao().queryForId(id);
                             categoriaDeServicos = base.categoriaDeServicoDao().queryForId(servicos.getCategoriaDeServicosId());
 
@@ -178,5 +181,8 @@ public void onBackPressed(){
                     });
                 }
         }
+        carregaCor();
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
     }
 }

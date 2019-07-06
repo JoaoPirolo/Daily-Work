@@ -11,24 +11,23 @@ import com.joaopirolo.diario_de_trabalho.R;
 import com.joaopirolo.diario_de_trabalho.model.CategoriaDeServicos;
 import com.joaopirolo.diario_de_trabalho.model.Servicos;
 
-import java.util.Locale;
 import java.util.concurrent.Executors;
 
-@Database(entities = { Servicos.class}, version = 1)
-public abstract class ServicosDatabase extends RoomDatabase{
+@Database(entities = { Servicos.class, CategoriaDeServicos.class}, version = 1)
+public abstract class DiarioDeTrabalhoDatabase extends RoomDatabase{
 
     public abstract ServicosDao servicosDao();
 
-    public static ServicosDatabase instance;
+    public static DiarioDeTrabalhoDatabase instance;
 
     public abstract CategoriaDeServicos categoriaDeServicoDao();
 
-public static ServicosDatabase getDatabase(final Context context) {
+public static DiarioDeTrabalhoDatabase getDatabase(final Context context) {
 
    if(instance == null){
-       synchronized (ServicosDatabase.class){
+       synchronized (DiarioDeTrabalhoDatabase.class){
            if(instance == null){
-               Builder builder = Room.databaseBuilder(context, ServicosDatabase.class, "servicos.db");
+               Builder builder = Room.databaseBuilder(context, DiarioDeTrabalhoDatabase.class, "servicos.db");
                builder.addCallback(new Callback() {
                    @Override
                    public void onCreate(@NonNull SupportSQLiteDatabase db){
@@ -41,16 +40,16 @@ public static ServicosDatabase getDatabase(final Context context) {
                        });
                    }
                });
-               instance = (ServicosDatabase) builder.build();
+               instance = (DiarioDeTrabalhoDatabase) builder.build();
            }
        }
    }
    return instance;
 }
 private static void mostrarCategoriasDeServicos(final Context context){
-    String[] categoriasDeServico = context.getResources().getStringArray(R.array.categoriaDeServicos);
-    for(String categoriaDeServicos: categoriasDeServico){
-        CategoriaDeServicos categoriadeservicos = new CategoriaDeServicos(categoriaDeServicos);
+    String[] tipos_servico = context.getResources().getStringArray(R.array.tipos_servicos);
+    for(String categoriaServicos: tipos_servico){
+        CategoriaDeServicos categoriaDeServicos= new CategoriaDeServicos(categoriaServicos);
         instance.categoriaDeServicoDao().insert(categoriaDeServicos);
     }
     }

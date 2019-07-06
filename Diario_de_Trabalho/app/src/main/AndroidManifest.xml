@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ServicosActivity"></activity>
+        <activity android:name=".ListaCategoriaDeServicosActivity"></activity>
+        <activity android:name=".CategoriasDeServicosActivity" />
+        <activity android:name=".ServicosActivity" />
         <activity android:name=".ListaServicosActivity" />
         <activity android:name=".PrincipalActivity">
             <intent-filter>

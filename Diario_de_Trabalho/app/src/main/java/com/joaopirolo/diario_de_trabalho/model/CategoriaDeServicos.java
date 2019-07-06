@@ -1,11 +1,11 @@
 package com.joaopirolo.diario_de_trabalho.model;
 
+import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 @Entity(tableName = "categoriasdeservicos", indices = @Index(value = {"tipoDeServico"}, unique = true))
-
 public class CategoriaDeServicos {
     @PrimaryKey(autoGenerate = true)
     private int id;

@@ -39,9 +39,7 @@ public class Servicos implements Serializable {
     public void setCity(@NonNull String city){
         this.city = city;
     }
-    public void setArd(@NonNull String ard){
-
-    }
+    public void setArd(@NonNull String ard){ this.ard = ard;}
     //get
     public int getId(){
         return id;

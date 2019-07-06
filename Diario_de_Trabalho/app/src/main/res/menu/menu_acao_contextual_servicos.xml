@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/deletar_servicos"
+          android:icon="@drawable/ic_delete_forever_black_24dp"
+          android:title="@string/apagar_servico"
+          app:showAsAction="ifRoom"/>
+    <item android:id="@+id/editar_servicos"
+          android:icon="@drawable/ic_mode_edit_black_24dp"
+          android:title="@string/editar_servicos"
+          app:showAsAction="ifRoom"/>
+
+</menu>

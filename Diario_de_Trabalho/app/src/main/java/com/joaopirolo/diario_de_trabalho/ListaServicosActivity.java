@@ -17,7 +17,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.joaopirolo.diario_de_trabalho.model.Servicos;
-import com.joaopirolo.diario_de_trabalho.persistence.ServicosDatabase;
+import com.joaopirolo.diario_de_trabalho.persistence.DiarioDeTrabalhoDatabase;
+import com.joaopirolo.diario_de_trabalho.utils.UtilsAviso;
 
 import java.util.List;
 
@@ -53,11 +54,11 @@ public class ListaServicosActivity extends AppCompatActivity {
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
            Servicos servicos = (Servicos) listViewServicos.getItemAtPosition(posSel);
            switch (item.getItemId()){
-               case R.id.atualiza_servicos:
-                   ServicosActivity.alterar_Servicos(ListaServicosActivity.this, REQUEST_ALTER_SERVICE, servicos);
+               case R.id.editar_servicos:
+                   ServicosActivity.alterarServico(ListaServicosActivity.this, REQUEST_ALTER_SERVICE, servicos);
                    mode.finish();
                    return true;
-               case R.id.deleta_servicos:
+               case R.id.deletar_servicos:
                    excluirServicos(servicos);
                    mode.finish();
                    return true;
@@ -90,11 +91,13 @@ public class ListaServicosActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 posSel = position;
                 Servicos servicos = (Servicos) listViewServicos.getItemAtPosition(posSel);
-                ServicosActivity.atualiza_servicos(ListaServicosActivity.this, REQUEST_ALTER_SERVICE, servicos);
+                ServicosActivity.alterarServico(ListaServicosActivity.this, REQUEST_ALTER_SERVICE, servicos);
             }
         });
         listViewServicos.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
         listViewServicos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id){
                 if(actionMode!=null){
@@ -119,7 +122,7 @@ public class ListaServicosActivity extends AppCompatActivity {
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-                ServicosDatabase base = ServicosDatabase.getDatabase(ListaServicosActivity.this);
+                DiarioDeTrabalhoDatabase base = DiarioDeTrabalhoDatabase.getDatabase(ListaServicosActivity.this);
 
                 listaDeServicos = base.servicosDao().queryAll();
 
@@ -148,7 +151,7 @@ public class ListaServicosActivity extends AppCompatActivity {
                         AsyncTask.execute(new Runnable() {
                             @Override
                             public void run() {
-                                ServicosDatabase base = ServicosDatabase.getDatabase(ListaServicosActivity.this);
+                                DiarioDeTrabalhoDatabase base = DiarioDeTrabalhoDatabase.getDatabase(ListaServicosActivity.this);
                                 base.servicosDao().delete(servicos);
                                 ListaServicosActivity.this.runOnUiThread(new Runnable() {
                                     @Override
