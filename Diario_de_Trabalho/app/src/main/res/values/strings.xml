@@ -6,6 +6,10 @@
     <string name="autor">Autor: João Carlos Pirolo</string>
     <string name="describe">Aplicativo movel para controle de atividades relacionadas aos serviços de telefonia fixa e internet ADSL, criado com objetivo de atender os requisitos para obter aprovação da disciplina de Programação Móvel.</string>
     <string name="addServico">Novo Servico</string>
+    <string name="numba">Numero do Ba</string>
+    <string name="city">Cidade</string>
+    <string name="ard">Armário</string>
+    <string name="categoriasDeServico">Tipo De Serviço Prestado</string>
 
 
 </resources>

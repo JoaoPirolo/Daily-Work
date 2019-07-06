@@ -54,7 +54,7 @@ public class ListaServicosActivity extends AppCompatActivity {
            Servicos servicos = (Servicos) listViewServicos.getItemAtPosition(posSel);
            switch (item.getItemId()){
                case R.id.atualiza_servicos:
-                   ServicosActivity.alterarServicos(ListaServicosActivity.this, REQUEST_ALTER_SERVICE, servicos);
+                   ServicosActivity.alterar_Servicos(ListaServicosActivity.this, REQUEST_ALTER_SERVICE, servicos);
                    mode.finish();
                    return true;
                case R.id.deleta_servicos:
@@ -140,7 +140,7 @@ public class ListaServicosActivity extends AppCompatActivity {
     private void excluirServicos(final Servicos servicos){
         String mensagem = "Tem certeza que deseja apagar?" + "\n" + servicos.getNumberBa();
 
-        DialogInterface.OnClickListener listener = new DialogInterface.onClickListener(){
+        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialogInterface, int which){
                 switch (which){
