@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -23,12 +25,11 @@ public class PrincipalActivity extends AppCompatActivity {
     private static final String CONFIG = "com.joaopirolo.diario_de_trabalho.PREFERENCIA_CORES";
     private static final String CORES = "CORES";
     public static int selecionaCor = Color.TRANSPARENT;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-        layout = findViewById(R.id.configs);
+        layout = findViewById(R.id.principal);
         mostrarPreferenciaDeCor();
     }
     public void mostrarPreferenciaDeCor(){
@@ -83,11 +84,11 @@ public class PrincipalActivity extends AppCompatActivity {
                 startActivityForResult(intent, 0);
                 return true;
             case R.id.servicos:
-                Intent novaIntent = new Intent(this, ServicosActivity.class);
+                Intent novaIntent = new Intent(this, ListaServicosActivity.class);
                 startActivityForResult(novaIntent, 0);
                 return true;
             case R.id.tiposServicos:
-                novaIntent = new Intent(this, CategoriaDeServicos.class);
+                novaIntent = new Intent(this, ListaCategoriaDeServicosActivity.class);
                 startActivityForResult(novaIntent,0);
                 return true;
             case R.id.cores:

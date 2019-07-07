@@ -6,7 +6,7 @@
 
     <item android:id="@+id/servicos"
         android:icon="@drawable/ic_content_paste_black_24dp"
-        android:title="Servicos"
+        android:title="ListaServicos"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/tiposServicos"

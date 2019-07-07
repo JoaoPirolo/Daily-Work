@@ -21,7 +21,7 @@
         android:id="@+id/textViewCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:text="Cidade"
         app:layout_constraintStart_toStartOf="@+id/textViewNumBa"
         app:layout_constraintTop_toBottomOf="@+id/textViewNumBa" />
@@ -30,7 +30,7 @@
         android:id="@+id/textViewArd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:text="Armário"
         app:layout_constraintStart_toStartOf="@+id/textViewCity"
         app:layout_constraintTop_toBottomOf="@+id/textViewCity" />

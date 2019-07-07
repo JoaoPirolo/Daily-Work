@@ -9,10 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListaCategoriaDeServicosActivity"></activity>
-        <activity android:name=".CategoriasDeServicosActivity" />
-        <activity android:name=".ServicosActivity" />
-        <activity android:name=".ListaServicosActivity" />
+        <activity android:name=".ListaCategoriaDeServicosActivity"
+                  android:label="@string/CategoriaDeServicos"
+                  android:parentActivityName=".CategoriasDeServicosActivity">
+
+        </activity>
+        <activity android:name=".CategoriasDeServicosActivity"
+                  android:label="@string/CategoriaDeServicos"
+                  android:parentActivityName=".PrincipalActivity">
+
+        </activity>
+        <activity android:name=".ServicosActivity"
+                    android:label="@string/Servicos"
+                    android:parentActivityName=".PrincipalActivity"/>
+
+        <activity android:name=".ListaServicosActivity"
+            android:label="@string/Servicos"
+            android:parentActivityName=".ServicosActivity"/>
         <activity android:name=".PrincipalActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
