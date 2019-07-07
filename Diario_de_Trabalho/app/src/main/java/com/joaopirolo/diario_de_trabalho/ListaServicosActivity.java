@@ -37,6 +37,49 @@ public class ListaServicosActivity extends AppCompatActivity {
 
     private ConstraintLayout layout;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_lista_servicos);
+        setTitle("Serviços");
+
+        listViewServicos = findViewById(R.id.listViewServicos);
+        layout = findViewById(R.id.listaServicosLayout);
+        listViewServicos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                posSel = position;
+                Servicos servicos = (Servicos) listViewServicos.getItemAtPosition(posSel);
+                ServicosActivity.alterarServico(ListaServicosActivity.this, REQUEST_ALTER_SERVICE, servicos);
+            }
+        });
+        listViewServicos.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+        listViewServicos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id){
+               /* if(actionMode!=null){
+                    return false;
+                }
+                posSel = position;
+                view.setBackgroundColor(Color.CYAN);
+                viewSelect = view;
+                listViewServicos.setEnabled(false);
+                actionMode = startSupportActionMode(mActionModeCallback);*/
+                return true;
+
+            }
+        });
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        mostrarServicos();
+        registerForContextMenu(listViewServicos);
+        carregaCor();
+    }
+
+
+
     private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
@@ -78,45 +121,6 @@ public class ListaServicosActivity extends AppCompatActivity {
         }
     };
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_servicos);
-        setTitle("Serviços");
-
-        listViewServicos = findViewById(R.id.listViewServicos);
-        layout = findViewById(R.id.listaServicosLayout);
-        listViewServicos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                posSel = position;
-                Servicos servicos = (Servicos) listViewServicos.getItemAtPosition(posSel);
-                ServicosActivity.alterarServico(ListaServicosActivity.this, REQUEST_ALTER_SERVICE, servicos);
-            }
-        });
-        listViewServicos.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-
-        listViewServicos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
-
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id){
-                if(actionMode!=null){
-                    return false;
-                }
-                posSel = position;
-                view.setBackgroundColor(Color.CYAN);
-                viewSelect = view;
-                listViewServicos.setEnabled(false);
-                actionMode = startSupportActionMode(mActionModeCallback);
-                return true;
-            }
-        });
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowHomeEnabled(true);
-        mostrarServicos();
-        registerForContextMenu(listViewServicos);
-        carregaCor();
-    }
 
     private void mostrarServicos(){
         AsyncTask.execute(new Runnable() {

@@ -9,7 +9,7 @@ import android.support.annotation.NonNull;
 import java.io.Serializable;
 @Entity(tableName = "servicos", foreignKeys = @ForeignKey(entity = CategoriaDeServicos.class,
                                                           parentColumns = "id",
-                                                          childColumns = "categoriaDeServicoId"))
+                                                          childColumns = "tipoDeServicoId"))
 public class Servicos implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -28,7 +28,7 @@ public class Servicos implements Serializable {
         setArd(ard);
     }
     @ColumnInfo(index = true)
-    private int categoriaDeServicoId;
+    private int tipoDeServicoId;
     //set
     public void setId(int id){
         this.id = id;
@@ -40,6 +40,8 @@ public class Servicos implements Serializable {
         this.city = city;
     }
     public void setArd(@NonNull String ard){ this.ard = ard;}
+    public void setTipoDeServicoId(@NonNull int tipoDeServicoId){this.tipoDeServicoId = tipoDeServicoId;
+    }
     //get
     public int getId(){
         return id;
@@ -53,7 +55,7 @@ public class Servicos implements Serializable {
     @NonNull public String getArd(){
         return ard;
     }
-
+    @NonNull public int getTipoDeServicoId(){return tipoDeServicoId;}
     @Override
     public String toString(){
         return getNumberBa();

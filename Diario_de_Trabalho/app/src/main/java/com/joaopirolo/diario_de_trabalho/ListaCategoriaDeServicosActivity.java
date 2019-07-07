@@ -83,7 +83,7 @@ public class ListaCategoriaDeServicosActivity extends AppCompatActivity {
             @Override
             public void run() {
                 DiarioDeTrabalhoDatabase base = DiarioDeTrabalhoDatabase.getDatabase(ListaCategoriaDeServicosActivity.this);
-                list = base.categoriaDeServicoDao().queryAll();
+                list = base.categoriaDeServicosDao().queryAll();
                 ListaCategoriaDeServicosActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -107,7 +107,7 @@ public class ListaCategoriaDeServicosActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 DiarioDeTrabalhoDatabase base = DiarioDeTrabalhoDatabase.getDatabase(ListaCategoriaDeServicosActivity.this);
-                                base.categoriaDeServicoDao().delete(categoriaDeServicos);
+                                base.categoriaDeServicosDao().delete(categoriaDeServicos);
 
                                 ListaCategoriaDeServicosActivity.this.runOnUiThread(new Runnable() {
                                     @Override

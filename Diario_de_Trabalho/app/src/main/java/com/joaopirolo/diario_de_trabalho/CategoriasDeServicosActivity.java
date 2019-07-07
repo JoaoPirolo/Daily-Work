@@ -45,17 +45,17 @@ public class CategoriasDeServicosActivity extends AppCompatActivity {
         if(bundle != null){
             modo = bundle.getInt(MODO, NEW);
             if(modo == NEW){
-                setTitle("Novo Tipo");
+                setTitle(R.string.nova_categoria);
                 categoriaDeServicos = new CategoriaDeServicos("");
             }
             else{
-                setTitle("Atualizar Tipo");
+                setTitle(R.string.atualiza_categoria);
                 AsyncTask.execute(new Runnable() {
                     @Override
                     public void run() {
                         int id = bundle.getInt(ID);
                         DiarioDeTrabalhoDatabase base = DiarioDeTrabalhoDatabase.getDatabase(CategoriasDeServicosActivity.this);
-                        categoriaDeServicos = base.categoriaDeServicoDao().queryForId(id);
+                        categoriaDeServicos = base.categoriaDeServicosDao().queryForId(id);
                         CategoriasDeServicosActivity.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -100,11 +100,11 @@ public class CategoriasDeServicosActivity extends AppCompatActivity {
             public void run() {
                 DiarioDeTrabalhoDatabase base = DiarioDeTrabalhoDatabase.getDatabase(CategoriasDeServicosActivity.this);
                 if(modo == NEW){
-                  int auxId = (int) base.categoriaDeServicoDao().insert(categoriaDeServicos);
+                  int auxId = (int) base.categoriaDeServicosDao().insert(categoriaDeServicos);
                   categoriaDeServicos.setId(auxId);
                 }
                 else{
-                    base.categoriaDeServicoDao().update(categoriaDeServicos);
+                    base.categoriaDeServicosDao().update(categoriaDeServicos);
                 }
                 setResult(Activity.RESULT_OK);
                 finish();

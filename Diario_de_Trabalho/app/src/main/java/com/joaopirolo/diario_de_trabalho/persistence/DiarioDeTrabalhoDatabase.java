@@ -13,14 +13,14 @@ import com.joaopirolo.diario_de_trabalho.model.Servicos;
 
 import java.util.concurrent.Executors;
 
-@Database(entities = { Servicos.class, CategoriaDeServicos.class}, version = 1)
+@Database(entities = { Servicos.class, CategoriaDeServicos.class}, version = 1, exportSchema = false)
 public abstract class DiarioDeTrabalhoDatabase extends RoomDatabase{
 
     public abstract ServicosDao servicosDao();
 
     public static DiarioDeTrabalhoDatabase instance;
 
-    public abstract CategoriaDeServicos categoriaDeServicoDao();
+    public abstract CategoriaDeServicosDao categoriaDeServicosDao();
 
 public static DiarioDeTrabalhoDatabase getDatabase(final Context context) {
 
@@ -50,7 +50,7 @@ private static void mostrarCategoriasDeServicos(final Context context){
     String[] tipos_servico = context.getResources().getStringArray(R.array.tipos_servicos);
     for(String categoriaServicos: tipos_servico){
         CategoriaDeServicos categoriaDeServicos= new CategoriaDeServicos(categoriaServicos);
-        instance.categoriaDeServicoDao().insert(categoriaDeServicos);
+        instance.categoriaDeServicosDao().insert(categoriaDeServicos);
     }
     }
 }

@@ -77,7 +77,7 @@ public void salvarServico(){
 
     CategoriaDeServicos categoriaDeServicos = (CategoriaDeServicos) spinnerCategoriaDeServicos.getSelectedItem();
     if(categoriaDeServicos != null){
-        servicos.setCategoriaDeServicosId(categoriaDeServicos.getId());
+        servicos.setTipoDeServicoId(categoriaDeServicos.getId());
     }
     AsyncTask.execute(new Runnable() {
         @Override
@@ -110,7 +110,7 @@ private void mostrarCategoriasDeServicos(){
         public void run() {
             DiarioDeTrabalhoDatabase base = DiarioDeTrabalhoDatabase.getDatabase(ServicosActivity.this);
 
-           categoriadeservicos = base.categoriaDeServicoDao().queryAll();
+           categoriadeservicos = base.categoriaDeServicosDao().queryAll();
 
             ServicosActivity.this.runOnUiThread(new Runnable() {
                 @Override
@@ -165,7 +165,7 @@ public void onBackPressed(){
                             int id = bundle.getInt(ID);
                             DiarioDeTrabalhoDatabase base = DiarioDeTrabalhoDatabase.getDatabase(ServicosActivity.this);
                             servicos = base.servicosDao().queryForId(id);
-                            categoriaDeServicos = base.categoriaDeServicoDao().queryForId(servicos.getCategoriaDeServicosId());
+                            categoriaDeServicos = base.categoriaDeServicosDao().queryForId(servicos.getTipoDeServicoId());
 
                             ServicosActivity.this.runOnUiThread(new Runnable() {
                                 @Override
@@ -173,7 +173,7 @@ public void onBackPressed(){
                                     editTextNumBa.setText(servicos.getNumberBa());
                                     editTextCity.setText(servicos.getCity());
                                     editTextArd.setText(servicos.getArd());
-                                    int ordem = ordenaTiposDeServico(servicos.getCategoriaDeServicosId());
+                                    int ordem = ordenaTiposDeServico(servicos.getTipoDeServicoId());
                                     spinnerCategoriaDeServicos.setSelection(ordem);
                                 }
                             });

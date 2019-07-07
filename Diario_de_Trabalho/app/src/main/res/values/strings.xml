@@ -28,4 +28,9 @@
     <string name="armario_vazio">Campo ARD vazio!</string>
     <string name="cidade_vazio">Campo cidade vazio!</string>
     <string name="tipo_servico_vazio">Campo Tipo de Servico está vazio</string>
+    <string name="nova_categoria">Novo Tipo de Serviço</string>
+    <string name="atualiza_categoria">Atualizar Tipo de Serviço</string>
+    <string name="red">VERMELHO</string>
+    <string name="green">VERDE</string>
+    <string name="gray">CINZA</string>
 </resources>
