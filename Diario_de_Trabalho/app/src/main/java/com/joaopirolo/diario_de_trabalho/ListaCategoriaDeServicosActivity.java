@@ -33,7 +33,7 @@ public class ListaCategoriaDeServicosActivity extends AppCompatActivity {
         setTitle("Tipos de Servico");
 
         listViewCategoriasDeServicos = findViewById(R.id.listViewCategoriaDeServicos);
-        layout = findViewById(R.id.listaServicosLayout);
+        layout = findViewById(R.id.listaCategoriaDeServicosLayout);
         listViewCategoriasDeServicos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -166,8 +166,9 @@ public class ListaCategoriaDeServicosActivity extends AppCompatActivity {
             if (viewutilizada != null) {
                 viewutilizada.setBackgroundColor(Color.TRANSPARENT);
             }
-            viewutilizada = null;
             actionMode = null;
+            viewutilizada = null;
+
             listViewCategoriasDeServicos.setEnabled(true);
 
         }
@@ -180,7 +181,7 @@ public class ListaCategoriaDeServicosActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_acao_contextual_categorias_servicos,menu);
+        inflater.inflate(R.menu.menu_acao_categoria_servicos,menu);
         return true;
     }
 

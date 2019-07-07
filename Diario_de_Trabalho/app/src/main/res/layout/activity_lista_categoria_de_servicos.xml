@@ -2,13 +2,14 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/listaCategoriaDeServicosLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ListaCategoriaDeServicosActivity">
 
     <ListView
         android:id="@+id/listViewCategoriaDeServicos"
-        android:layout_width="395dp"
+        android:layout_width="376dp"
         android:layout_height="715dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"

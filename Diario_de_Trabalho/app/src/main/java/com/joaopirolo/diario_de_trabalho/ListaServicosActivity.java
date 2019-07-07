@@ -8,7 +8,7 @@ import android.os.AsyncTask;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.ActionMode;
+import android.support.v7.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -59,14 +59,14 @@ public class ListaServicosActivity extends AppCompatActivity {
 
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id){
-               /* if(actionMode!=null){
+                if(actionMode!=null){
                     return false;
                 }
                 posSel = position;
                 view.setBackgroundColor(Color.CYAN);
                 viewSelect = view;
                 listViewServicos.setEnabled(false);
-                actionMode = startSupportActionMode(mActionModeCallback);*/
+                actionMode = startSupportActionMode(mActionModeCallback);
                 return true;
 
             }
@@ -84,7 +84,7 @@ public class ListaServicosActivity extends AppCompatActivity {
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
             MenuInflater inflate = mode.getMenuInflater();
-            inflate.inflate(R.menu.menu_lista_servicos,menu);
+            inflate.inflate(R.menu.menu_acao_contextual_servicos,menu);
             return true;
         }
 
