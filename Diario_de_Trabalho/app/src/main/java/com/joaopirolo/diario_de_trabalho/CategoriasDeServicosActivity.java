@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
@@ -38,7 +39,7 @@ public class CategoriasDeServicosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_categorias_de_servicos);
 
         editTextTipoServico = findViewById(R.id.editTextCategoriaServicos);
-        layout = findViewById(R.id.addCategoriaServico);
+        layout = findViewById(R.id.addCategoriaServicoLayout);
 
         Intent intent = getIntent();
         final Bundle bundle = intent.getExtras();
@@ -86,7 +87,9 @@ public class CategoriasDeServicosActivity extends AppCompatActivity {
 
         layout.setBackgroundColor(PrincipalActivity.selecionaCor);
     }
-
+    public void salvarComBotao(View view){
+        salvarCategoriaDeServico();
+    }
     private void salvarCategoriaDeServico(){
         String tipoDeServico = UtilsAviso.validaCampo(this,
                                                       editTextTipoServico,

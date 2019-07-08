@@ -25,6 +25,62 @@ import java.util.List;
 
 public class ListaCategoriaDeServicosActivity extends AppCompatActivity {
 
+    private ConstraintLayout layout;
+    private ListView listViewCategoriasDeServicos;
+    private ArrayAdapter<CategoriaDeServicos> arrayAdapter;
+    private List<CategoriaDeServicos> list;
+
+    private ActionMode actionMode;
+    private int elementoSelecionado = -1;
+    private View viewutilizada;
+
+    private static final int REQUEST_NEW_TYPE_SERVICE = 1;
+    private static final int REQUEST_UPDATE_TYPE_SERVICE = 2;
+
+    private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            MenuInflater inflater = mode.getMenuInflater();
+            inflater.inflate(R.menu.menu_acao_contextual_categorias_servicos, menu);
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+
+            return false;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem menuItem) {
+           CategoriaDeServicos categoriaDeServicos = (CategoriaDeServicos) listViewCategoriasDeServicos.getItemAtPosition(elementoSelecionado);
+           switch (menuItem.getItemId()){
+               case
+               R.id.editar_CategoriaServicos: CategoriasDeServicosActivity.editCategoria(ListaCategoriaDeServicosActivity.this, REQUEST_UPDATE_TYPE_SERVICE, categoriaDeServicos);
+               mode.finish();
+               return true;
+               case
+               R.id.deletar_categoria_servicos:apagarCategoria(categoriaDeServicos);
+               mode.finish();
+               return true;
+
+               default:
+                   return false;
+           }
+
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+        if(viewutilizada != null){
+            viewutilizada.setBackgroundColor(Color.TRANSPARENT);
+        }
+        actionMode = null;
+        viewutilizada = null;
+        }
+    };
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +110,7 @@ public class ListaCategoriaDeServicosActivity extends AppCompatActivity {
                 view.setBackgroundColor(Color.CYAN);
                 viewutilizada = view;
                 listViewCategoriasDeServicos.setEnabled(false);
-                actionMode = startSupportActionMode(mActionMode);
+                actionMode = startSupportActionMode(mActionModeCallback);
 
                 return true;
             }
@@ -66,17 +122,6 @@ public class ListaCategoriaDeServicosActivity extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(true);
     }
 
-    private ConstraintLayout layout;
-    private ListView listViewCategoriasDeServicos;
-    private ArrayAdapter<CategoriaDeServicos> arrayAdapter;
-    private List<CategoriaDeServicos> list;
-
-    private ActionMode actionMode;
-    private int elementoSelecionado = -1;
-    private View viewutilizada;
-
-    private static final int REQUEST_NEW_TYPE_SERVICE = 1;
-    private static final int REQUEST_UPDATE_TYPE_SERVICE = 2;
 
     private void mostrarCategoriasDeServicos(){
         AsyncTask.execute(new Runnable() {
@@ -96,7 +141,7 @@ public class ListaCategoriaDeServicosActivity extends AppCompatActivity {
             }
         });
     }
-    private void excluirCategoriaDeServico(final CategoriaDeServicos categoriaDeServicos){
+    private void apagarCategoria(final CategoriaDeServicos categoriaDeServicos){
         String msg = "Tem certeza?" + "\n" + categoriaDeServicos.getTipoDeServico();
         DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
             @Override
@@ -130,51 +175,7 @@ public class ListaCategoriaDeServicosActivity extends AppCompatActivity {
             mostrarCategoriasDeServicos();
         }
     }
-    private ActionMode.Callback mActionMode = new ActionMode.Callback() {
-        @Override
-        public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
-            MenuInflater menuInflater = actionMode.getMenuInflater();
-            menuInflater.inflate(R.menu.menu_acao_contextual_categorias_servicos, menu);
-            return true;
-        }
-
-        @Override
-        public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
-            return false;
-        }
-
-        @Override
-        public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-            CategoriaDeServicos categoriaDeServicos = (CategoriaDeServicos) listViewCategoriasDeServicos.getItemAtPosition(elementoSelecionado);
-            switch (menuItem.getItemId()) {
-                case R.id.editar_CategoriaServicos:
-                    CategoriasDeServicosActivity.editCategoria(ListaCategoriaDeServicosActivity.this, REQUEST_UPDATE_TYPE_SERVICE, categoriaDeServicos);
-                    actionMode.finish();
-                    return true;
-                case R.id.deletar_categoria_servicos:
-                    excluirCategoriaDeServico(categoriaDeServicos);
-                    actionMode.finish();
-                    return true;
-                default:
-                    return false;
-            }
-
-        }
-
-        @Override
-        public void onDestroyActionMode(ActionMode actionMode) {
-            if (viewutilizada != null) {
-                viewutilizada.setBackgroundColor(Color.TRANSPARENT);
-            }
-            actionMode = null;
-            viewutilizada = null;
-
-            listViewCategoriasDeServicos.setEnabled(true);
-
-        }
-
-    };
-    private void carregaCor(){
+        private void carregaCor(){
         layout.setBackgroundColor(PrincipalActivity.selecionaCor);
     }
 
@@ -190,7 +191,6 @@ public class ListaCategoriaDeServicosActivity extends AppCompatActivity {
         switch (menuItem.getItemId()){
             case R.id.addCategoriaServico: CategoriasDeServicosActivity.addCategoria(this,REQUEST_NEW_TYPE_SERVICE);
             return true;
-
             default:
                 return super.onOptionsItemSelected(menuItem);
         }
