@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Diario de Trabalho</string>
+    <string name="app_Name">Lista de Trabalho</string>
+    <string name="info">Info</string>
+    <string name="preferencias">Preferencias</string>
+    <string name="autor">Autor: João Carlos Pirolo</string>
+    <string name="describe">Aplicativo movel para controle de atividades relacionadas aos serviços de telefonia fixa e internet ADSL, criado com objetivo de atender os requisitos para obter aprovação da disciplina de Programação Móvel.</string>
+    <string name="addServico">Novo Servico</string>
+    <string name="Servicos">Servicos</string>
+
+    <string name="numba">Numero do Ba</string>
+    <string name="city">Cidade</string>
+    <string name="ard">Armário</string>
+    <string name="categoriasDeServico">Tipo De Serviço Prestado</string>
+    <string name="apagar_servico">Apagar Servico</string>
+    <string name="editar_servicos">Editar Serviço</string>
+    <string name="tipoDeServico">Tipo de Serviço</string>
+    <string name="deletar_categoria_de_servico">Deletar Categoria De Servico</string>
+    <string name="editar_categoria">Editar Categoria</string>
+    <string name="CategoriaDeServicos">Tipos De Servicos</string>
+    <string name="add_servico">Add Servico</string>
+    <string name="novo_servico">Novo Serviço</string>
+    <string name="editarServico">Atualizar Serviço</string>
+    <string name="numBa_vazio">Campo BA vazio</string>
+    <string name="addCategoriaServico">addCategoriaServico</string>
+    <string name="notificacao">notifica</string>
+    <string name="ok">OK</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="armario_vazio">Campo ARD vazio!</string>
+    <string name="cidade_vazio">Campo cidade vazio!</string>
+    <string name="tipo_servico_vazio">Campo Tipo de Servico está vazio</string>
+    <string name="nova_categoria">Novo Tipo de Serviço</string>
+    <string name="atualiza_categoria">Atualizar Tipo de Serviço</string>
+    <string name="red">VERMELHO</string>
+    <string name="green">VERDE</string>
+    <string name="gray">CINZA</string>
+</resources>

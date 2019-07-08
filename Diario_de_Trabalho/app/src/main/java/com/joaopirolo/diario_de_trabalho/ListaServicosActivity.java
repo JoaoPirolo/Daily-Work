@@ -41,7 +41,7 @@ public class ListaServicosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_servicos);
-        setTitle("Serviços");
+        setTitle(R.string.Servicos);
 
         listViewServicos = findViewById(R.id.listViewServicos);
         layout = findViewById(R.id.listaServicosLayout);

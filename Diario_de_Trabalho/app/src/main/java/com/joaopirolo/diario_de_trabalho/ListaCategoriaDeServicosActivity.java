@@ -86,7 +86,7 @@ public class ListaCategoriaDeServicosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_categoria_de_servicos);
 
-        setTitle("Tipos de Servico");
+        setTitle(R.string.CategoriaDeServicos);
 
         listViewCategoriasDeServicos = findViewById(R.id.listViewCategoriaDeServicos);
         layout = findViewById(R.id.listaCategoriaDeServicosLayout);
