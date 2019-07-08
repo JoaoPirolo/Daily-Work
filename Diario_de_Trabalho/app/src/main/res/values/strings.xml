@@ -36,5 +36,6 @@
     <string name="green">GREEN</string>
     <string name="gray">GRAY</string>
     <string name="confirmar">Confirm</string>
+    <string name="gravar">Save</string>
 
 </resources>

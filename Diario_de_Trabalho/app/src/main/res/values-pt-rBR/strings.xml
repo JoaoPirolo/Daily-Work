@@ -19,7 +19,7 @@
     <string name="deletar_categoria_de_servico">Deletar Categoria De Servico</string>
     <string name="editar_categoria">Editar Categoria</string>
     <string name="CategoriaDeServicos">Tipos De Servicos</string>
-    <string name="add_servico">Add Servico</string>
+    <string name="add_servico">Gravar</string>
     <string name="novo_servico">Novo Serviço</string>
     <string name="editarServico">Atualizar Serviço</string>
     <string name="numBa_vazio">Campo BA vazio</string>
@@ -37,5 +37,6 @@
     <string name="green">VERDE</string>
     <string name="gray">CINZA</string>
     <string name="confirmar">Confirma</string>
+    <string name="gravar">Gravar</string>
 
 </resources>
