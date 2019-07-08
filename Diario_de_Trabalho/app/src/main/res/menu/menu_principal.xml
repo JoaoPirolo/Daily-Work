@@ -19,12 +19,24 @@
         android:title="Config"
         app:showAsAction="ifRoom">
         <menu>
-            <item android:id="@+id/cores"
-                  android:title="@string/preferencias"
-                  app:showAsAction="never"/>
-            <item android:id="@+id/info"
-                  android:title="@string/info"
-                  app:showAsAction="never"/>
+            <item
+                android:id="@+id/info"
+                android:title="@string/info"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/cor_cinza"
+                android:title="@string/gray"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/cor_vermelho"
+                android:title="@string/red"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/cor_verde"
+                android:title="@string/green"
+                app:showAsAction="never" />
+
         </menu>
     </item>
 </menu>

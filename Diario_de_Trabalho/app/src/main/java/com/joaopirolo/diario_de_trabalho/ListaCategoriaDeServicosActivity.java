@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.joaopirolo.diario_de_trabalho.model.CategoriaDeServicos;
+import com.joaopirolo.diario_de_trabalho.model.Servicos;
 import com.joaopirolo.diario_de_trabalho.persistence.DiarioDeTrabalhoDatabase;
 import com.joaopirolo.diario_de_trabalho.utils.UtilsAviso;
 
@@ -195,4 +196,28 @@ public class ListaCategoriaDeServicosActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(menuItem);
         }
     }
+/*private void verificaTipoDeServico(final CategoriaDeServicos categoriaDeServicos){
+AsyncTask.execute(new Runnable() {
+    @Override
+    public void run() {
+DiarioDeTrabalhoDatabase base = DiarioDeTrabalhoDatabase.getDatabase(ListaCategoriaDeServicosActivity.this);
+List<Servicos> list =base.servicosDao().queryForId(categoriaDeServicos.getId());
+        if(list != null && list.size()>0){
+ListaCategoriaDeServicosActivity.this.runOnUiThread(new Runnable() {
+    @Override
+    public void run() {
+        UtilsAviso.notificaErro(ListaCategoriaDeServicosActivity.this, R.string.Servicos);
+    }
+});
+return;
+        }
+ListaCategoriaDeServicosActivity.this.runOnUiThread(new Runnable() {
+    @Override
+    public void run() {
+apagarCategoria(categoriaDeServicos);
+    }
+});
+    }
+});
+}*/
 }

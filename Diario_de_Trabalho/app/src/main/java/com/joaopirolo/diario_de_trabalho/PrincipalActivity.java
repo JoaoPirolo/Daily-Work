@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ public class PrincipalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_principal);
         layout = findViewById(R.id.principal);
         mostrarPreferenciaDeCor();
+
     }
     public void mostrarPreferenciaDeCor(){
         SharedPreferences sharedPreferences = getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
@@ -49,27 +51,7 @@ public class PrincipalActivity extends AppCompatActivity {
         selecionaCor = selecionaCor;
         mostraCores();
     }
-    public void selecaoCor(){
-        CharSequence opcoes[] = new CharSequence[]{getString(R.string.red),getString(R.string.green),getString(R.string.gray)};
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(false);
-        builder.setTitle("Escolha de Cor");
-
-        builder.setItems(opcoes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if(which == 0){
-                    salvarPreferencia(Color.RED);}
-                 else if(which == 1){
-                     salvarPreferencia(Color.GREEN);
-                    }else if(which == 2){
-                     salvarPreferencia(Color.GRAY);
-                    }
-
-            }
-        });
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_principal, menu);
@@ -91,8 +73,14 @@ public class PrincipalActivity extends AppCompatActivity {
                 novaIntent = new Intent(this, ListaCategoriaDeServicosActivity.class);
                 startActivityForResult(novaIntent,0);
                 return true;
-            case R.id.cores:
-                selecaoCor();
+            case R.id.cor_cinza:
+                salvarPreferencia(Color.GRAY);
+                return true;
+            case R.id.cor_vermelho:
+                salvarPreferencia(Color.RED);
+                return true;
+            case R.id.cor_verde:
+                salvarPreferencia(Color.GREEN);
                 return true;
                 default:
                     return super.onOptionsItemSelected(item);

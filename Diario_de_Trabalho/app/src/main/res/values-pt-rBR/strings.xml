@@ -36,4 +36,6 @@
     <string name="red">VERMELHO</string>
     <string name="green">VERDE</string>
     <string name="gray">CINZA</string>
+    <string name="confirmar">Confirma</string>
+
 </resources>

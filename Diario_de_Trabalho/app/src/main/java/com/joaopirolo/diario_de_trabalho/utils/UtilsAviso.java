@@ -13,7 +13,7 @@ public class UtilsAviso {
     }
     public static void validaAcao(Context context, String mensagem, DialogInterface.OnClickListener listener){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Confirma");
+        builder.setTitle(R.string.confirmar);
         builder.setIcon(android.R.drawable.ic_dialog_alert);
         builder.setMessage(mensagem);
         builder.setPositiveButton(R.string.sim,listener);
